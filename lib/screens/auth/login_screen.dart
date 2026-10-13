@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../theme.dart';
 import '../admin/dashboard_admin_screen.dart';
+import '../kasir/dashboard_kasir_screen.dart';
 import 'register_screen.dart';
 import 'forgot_password_screen.dart';
 
@@ -17,6 +18,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  /// Role terpilih untuk login
+  String _selectedRole = 'Admin';
+
   /// Toggle visibilitas password
   bool _obscure = true;
 
@@ -168,14 +172,46 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 8),
 
+                    // PILIHAN ROLE UNTUK LOGIN (UI-ONLY WIREFRAME)
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Role',
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+                    ),
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<String>(
+                      value: _selectedRole,
+                      decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.badge_outlined)),
+                      items: const [
+                        DropdownMenuItem(value: 'Admin', child: Text('Admin')),
+                        DropdownMenuItem(value: 'Kasir', child: Text('Kasir')),
+                      ],
+                      onChanged: (value) {
+                        if (value == null) return;
+                        setState(() => _selectedRole = value);
+                      },
+                    ),
+                    const SizedBox(height: 16),
+
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const DashboardAdminScreen()),
-                        ),
+                        onPressed: () {
+                          if (_selectedRole == 'Kasir') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const DashboardKasirScreen()),
+                            );
+                            return;
+                          }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const DashboardAdminScreen()),
+                          );
+                        },
                         icon: const Icon(Icons.login),
                         label: const Text('Masuk Dashboard'),
                       ),

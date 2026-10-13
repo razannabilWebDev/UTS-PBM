@@ -3,8 +3,11 @@ import '../../theme.dart';
 import '../../widgets/app_scaffold.dart';
 import 'struk_screen.dart';
 
-/// Transaksi Penjualan / POS (murni tampilan statis).
-/// Web memakai 2 kolom; di mobile disusun bertahap 1-2-3-4.
+/// =============================
+/// HALAMAN POS (TRANSAKSI PENJUALAN)
+/// =============================
+/// Layar kasir untuk input transaksi (UI-only wireframe).
+/// Disusun bertahap: Input Barang, Daftar Belanja, Pelanggan, Pembayaran.
 class PosScreen extends StatelessWidget {
   const PosScreen({super.key});
 
@@ -15,7 +18,7 @@ class PosScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // 1. Input barang
+          // 1. INPUT BARANG
           _stepCard(
             1,
             'Input Barang',
@@ -68,7 +71,7 @@ class PosScreen extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // 2. Daftar belanjaan
+          // 2. DAFTAR BELANJAAN
           _stepCard(
             2,
             'Daftar Belanjaan',
@@ -96,7 +99,7 @@ class PosScreen extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // 3. Data pelanggan
+          // 3. DATA PELANGGAN
           _stepCard(
             3,
             'Data Pelanggan',
@@ -160,7 +163,7 @@ class PosScreen extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // 4. Pembayaran
+          // 4. PEMBAYARAN
           _stepCard(
             4,
             'Pembayaran',
@@ -248,6 +251,7 @@ class PosScreen extends StatelessWidget {
     );
   }
 
+  /// Kartu langkah transaksi
   static Widget _stepCard(int step, String title, Widget child) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -295,8 +299,11 @@ class PosScreen extends StatelessWidget {
   }
 }
 
+/// Item barang pada keranjang belanja (private)
 class _CartItem extends StatelessWidget {
-  final String nama, harga, subtotal;
+  final String nama;
+  final String harga;
+  final String subtotal;
   const _CartItem({
     required this.nama,
     required this.harga,

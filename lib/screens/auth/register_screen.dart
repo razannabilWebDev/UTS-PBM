@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../../theme.dart';
 import 'verify_otp_screen.dart';
 
-/// Halaman Register (murni tampilan).
+/// =============================
+/// HALAMAN REGISTER (DAFTAR AKUN)
+/// =============================
+/// Form pendaftaran akun (UI-only wireframe).
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -11,6 +14,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  /// Toggle visibilitas password
   bool _obscure = true;
 
   @override
@@ -24,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header hijau kecil
+              // HEADER INFO DAFTAR AKUN
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(18),
@@ -124,6 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
+  /// Label field
   Widget _label(String t) => Text(t,
       style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500));
 }

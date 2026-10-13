@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-/// Kartu statistik dashboard (pengganti .stats-card pada web).
+/// =============================
+/// KARTU STATISTIK
+/// =============================
+/// Kartu ringkasan angka untuk dashboard (mirip komponen .stats-card web).
 class StatCard extends StatelessWidget {
+  /// Label statistik (contoh: "Total Barang")
   final String label;
+
+  /// Nilai statistik (bisa berupa angka atau teks berformat Rp)
   final String value;
+
+  /// Ikon representatif
   final IconData icon;
 
   const StatCard({
@@ -69,11 +77,22 @@ class StatCard extends StatelessWidget {
   }
 }
 
-/// Kartu putih berjudul (pengganti .card Bootstrap).
+/// =============================
+/// KARTU BAGIAN (SECTION CARD)
+/// =============================
+/// Kartu putih berjudul, digunakan untuk mengelompokkan konten
+/// pada dashboard & halaman lain (mirip .card Bootstrap).
 class SectionCard extends StatelessWidget {
+  /// Judul kartu (opsional)
   final String? title;
+
+  /// Ikon judul (opsional)
   final IconData? titleIcon;
+
+  /// Konten di dalam kartu
   final Widget child;
+
+  /// Padding internal kartu
   final EdgeInsets padding;
 
   const SectionCard({

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../../theme.dart';
 import '../../widgets/app_scaffold.dart';
 
-/// Struk Transaksi (murni tampilan, meniru layout cetak_struk.php).
+/// =============================
+/// HALAMAN STRUK TRANSAKSI
+/// =============================
+/// Preview struk pembayaran (UI-only wireframe), meniru layout cetak struk.
 class StrukScreen extends StatelessWidget {
   const StrukScreen({super.key});
 
@@ -121,6 +124,7 @@ class StrukScreen extends StatelessWidget {
     );
   }
 
+  /// Baris label-nilai pada struk
   static Widget _row(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
@@ -136,6 +140,7 @@ class StrukScreen extends StatelessWidget {
     );
   }
 
+  /// Baris detail item pada struk
   static Widget _item(String nama, String qty, String total) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -159,6 +164,7 @@ class StrukScreen extends StatelessWidget {
   }
 }
 
+/// Garis putus-putus pemisah
 class _Dashed extends StatelessWidget {
   const _Dashed();
 

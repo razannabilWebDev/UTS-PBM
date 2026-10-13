@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../theme.dart';
 
-/// Halaman Lupa Password (murni tampilan).
+/// =============================
+/// HALAMAN LUPA PASSWORD
+/// =============================
+/// Form permintaan pengiriman kode OTP (UI-only wireframe).
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 

@@ -4,8 +4,11 @@ import '../admin/dashboard_admin_screen.dart';
 import 'register_screen.dart';
 import 'forgot_password_screen.dart';
 
-/// Halaman Login (murni tampilan).
-/// Layout web yang terbelah kiri/kanan disusun vertikal untuk layar mobile.
+/// =============================
+/// HALAMAN LOGIN
+/// =============================
+/// Halaman masuk aplikasi (murni UI wireframe).
+/// Layout vertikal untuk mobile (adaptasi dari layout 2 kolom web).
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -14,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  /// Toggle visibilitas password
   bool _obscure = true;
 
   @override
@@ -24,7 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // ---- Bagian brand (dulu: left-side) ----
+              // ---- BAGIAN BRAND (LEFT SIDE - WEB) DIADAPTASI VERTIKAL ----
+              // Menampilkan logo, nama sistem, tagline & fitur
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(24, 40, 24, 36),
@@ -94,7 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              // ---- Bagian form (dulu: right-side) ----
+              // ---- BAGIAN FORM LOGIN (RIGHT SIDE - WEB) ----
+              // Form input username/password & aksi login
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -212,6 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  /// Item fitur pada bagian brand
   Widget _feature(IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),

@@ -1,21 +1,30 @@
-/// Helper format teks. Hanya untuk tampilan (tidak ada logika bisnis).
+/// =============================
+/// HELPER FORMAT (UI-ONLY)
+/// =============================
+/// Helper format teks untuk tampilan. Tidak mengandung logika bisnis.
+/// Digunakan untuk menampilkan angka dalam format rupiah.
 class Fmt {
-  /// Format angka menjadi "1.250.000".
+  /// Format angka menjadi string ribuan: "1.250.000"
   static String rupiah(num value) {
     final s = value.round().toString();
     final buffer = StringBuffer();
     for (int i = 0; i < s.length; i++) {
+      // Tambahkan titik pemisah ribuan dari kanan ke kiri
       if (i > 0 && (s.length - i) % 3 == 0) buffer.write('.');
       buffer.write(s[i]);
     }
     return buffer.toString();
   }
 
-  /// Prefix lengkap "Rp 1.250.000".
+  /// Format lengkap dengan prefix Rp: "Rp 1.250.000"
   static String rp(num value) => 'Rp ${rupiah(value)}';
 }
 
-/// Label dummy statis yang dipakai berulang di beberapa layar.
+/// =============================
+/// DATA DUMMY (WIREFRAME)
+/// =============================
+/// Data statis hardcoded yang dipakai berulang di berbagai layar.
+/// Hanya untuk keperluan tampilan UI (bukan sumber data nyata).
 class Dummy {
   static const List<Map<String, String>> barang = [
     {'nama': 'Beras Premium 5kg', 'kategori': 'Sembako', 'stok': '42', 'harga': '65.000'},

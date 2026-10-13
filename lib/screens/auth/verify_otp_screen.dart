@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../../theme.dart';
 import 'reset_password_screen.dart';
 
-/// Halaman Verifikasi OTP (murni tampilan).
+/// =============================
+/// HALAMAN VERIFIKASI OTP
+/// =============================
+/// Verifikasi kode OTP (UI-only wireframe).
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key});
 
@@ -11,6 +14,7 @@ class VerifyOtpScreen extends StatefulWidget {
 }
 
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+  /// Controller untuk 4 digit OTP
   final List<TextEditingController> _controllers =
       List.generate(4, (_) => TextEditingController());
 

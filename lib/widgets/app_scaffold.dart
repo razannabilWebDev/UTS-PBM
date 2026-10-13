@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 import '../screens/admin/dashboard_admin_screen.dart';
+import '../screens/kasir/dashboard_kasir_screen.dart';
 import '../screens/admin/barang_screen.dart';
 import '../screens/admin/supplier_screen.dart';
 import '../screens/admin/pelanggan_screen.dart';
@@ -10,12 +11,21 @@ import '../screens/transaksi/pos_screen.dart';
 import '../screens/transaksi/riwayat_screen.dart';
 import '../screens/auth/login_screen.dart';
 
-/// Shell halaman dashboard: Drawer (pengganti sidebar web) + AppBar (navbar web).
-/// Murni tampilan: menu hanya melakukan navigasi.
+/// Shell halaman aplikasi: Drawer (menu navigasi) + AppBar.
+/// Digunakan bersama Dashboard/Admin/Kasir & halaman lain.
+/// Murni tampilan wireframe: menu hanya melakukan navigasi antar layar.
+/// Shell utama halaman: AppBar (navbar) + Drawer (menu) + Body
 class AppScaffold extends StatelessWidget {
+  /// Judul halaman (AppBar)
   final String title;
+
+  /// Subjudul halaman (AppBar)
   final String subtitle;
+
+  /// Konten halaman
   final Widget body;
+
+  /// Flag konteks role: true = Kasir, false = Admin
   final bool isKasir;
 
   const AppScaffold({
@@ -46,6 +56,7 @@ class AppScaffold extends StatelessWidget {
           ],
         ),
         actions: [
+          // Profil pengguna (dummy) di kanan AppBar
           Padding(
             padding: const EdgeInsets.only(right: 12),
             child: Row(
@@ -74,16 +85,21 @@ class AppScaffold extends StatelessWidget {
           ),
         ],
       ),
+      // Menu samping (Drawer)
       drawer: DrawerMenu(isKasir: isKasir),
+      // Isi halaman dengan SafeArea
       body: SafeArea(child: body),
     );
   }
 }
 
+/// Drawer menu (sisi kiri) berisi brand, daftar menu, & tombol logout
 class DrawerMenu extends StatelessWidget {
+  /// Apakah menu ditampilkan untuk konteks Kasir (true) atau Admin (false)
   final bool isKasir;
   const DrawerMenu({super.key, this.isKasir = false});
 
+  /// Navigasi ke layar tujuan (menutup drawer terlebih dahulu)
   void _go(BuildContext context, Widget screen) {
     Navigator.pop(context);
     Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
@@ -95,7 +111,8 @@ class DrawerMenu extends StatelessWidget {
       backgroundColor: AppColors.darkGreen,
       child: Column(
         children: [
-          // Header brand
+          // HEADER BRAND (Groceria)
+          // Menampilkan logo & nama sistem
           Container(
             width: double.infinity,
             padding: const EdgeInsets.fromLTRB(20, 48, 20, 24),
@@ -137,7 +154,8 @@ class DrawerMenu extends StatelessWidget {
             ),
           ),
 
-          // Menu
+          // MENU NAVIGASI
+          // Menampilkan menu sesuai role (Admin / Kasir)
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -145,7 +163,8 @@ class DrawerMenu extends StatelessWidget {
             ),
           ),
 
-          // Logout
+          // TOMBOL LOGOUT
+          // Kembali ke halaman Login & bersihkan stack navigasi
           Padding(
             padding: const EdgeInsets.all(16),
             child: SizedBox(
@@ -175,6 +194,7 @@ class DrawerMenu extends StatelessWidget {
     );
   }
 
+  /// Daftar menu untuk role Admin
   List<Widget> _adminMenu(BuildContext context) => [
         _item(context, Icons.pie_chart, 'Dashboard', const DashboardAdminScreen()),
         _item(context, Icons.inventory_2, 'Barang', const BarangScreen()),
@@ -186,13 +206,16 @@ class DrawerMenu extends StatelessWidget {
         _item(context, Icons.admin_panel_settings, 'User', const UserScreen()),
       ];
 
+  /// Daftar menu untuk role Kasir
+  /// (Tidak menampilkan Laporan, User, dan Supplier)
   List<Widget> _kasirMenu(BuildContext context) => [
-        _item(context, Icons.pie_chart, 'Dashboard', const DashboardAdminScreen(isKasir: true)),
+        _item(context, Icons.pie_chart, 'Dashboard', const DashboardKasirScreen()),
         _item(context, Icons.point_of_sale, 'Transaksi', const PosScreen()),
         _item(context, Icons.groups, 'Pelanggan', const PelangganScreen()),
         _item(context, Icons.receipt_long, 'Riwayat Transaksi', const RiwayatScreen()),
       ];
 
+  /// Item menu drawer tunggal
   Widget _item(BuildContext context, IconData icon, String label, Widget screen) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),

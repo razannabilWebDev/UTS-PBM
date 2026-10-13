@@ -5,8 +5,13 @@ import '../../widgets/app_scaffold.dart';
 import '../../widgets/stat_card.dart';
 import '../../widgets/badge.dart';
 
-/// Dashboard Admin / Kasir (murni tampilan statis).
+/// =============================
+/// DASHBOARD ADMIN
+/// =============================
+/// Halaman dashboard untuk role Admin (UI-only wireframe).
+/// Menampilkan statistik, barang terbaru, aktivitas & stok menipis.
 class DashboardAdminScreen extends StatelessWidget {
+  /// Flag konteks kasir (opsional, dipertahankan untuk kompatibilitas)
   final bool isKasir;
   const DashboardAdminScreen({super.key, this.isKasir = false});
 
@@ -19,7 +24,7 @@ class DashboardAdminScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // Grid statistik
+          // GRID STATISTIK ADMIN
           GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
@@ -39,7 +44,7 @@ class DashboardAdminScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // Barang terbaru
+          // BARANG TERBARU
           SectionCard(
             title: 'Barang Terbaru',
             titleIcon: Icons.inventory_2,
@@ -84,7 +89,7 @@ class DashboardAdminScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // Aktivitas terbaru
+          // AKTIVITAS TERBARU
           const SectionCard(
             title: 'Aktivitas Terbaru',
             titleIcon: Icons.history,
@@ -99,7 +104,7 @@ class DashboardAdminScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // Stok menipis
+          // STOK MENIPIS
           const SectionCard(
             title: 'Stok Menipis',
             titleIcon: Icons.warning_amber_rounded,
@@ -118,8 +123,13 @@ class DashboardAdminScreen extends StatelessWidget {
   }
 }
 
+/// Item aktivitas transaksi terbaru (private)
 class _AktivitasItem extends StatelessWidget {
-  final String id, nama, kasir, total, waktu;
+  final String id;
+  final String nama;
+  final String kasir;
+  final String total;
+  final String waktu;
   const _AktivitasItem({
     required this.id,
     required this.nama,
@@ -173,8 +183,11 @@ class _AktivitasItem extends StatelessWidget {
   }
 }
 
+/// Item stok menipis (private)
 class _StokMenipis extends StatelessWidget {
-  final String nama, stok, min;
+  final String nama;
+  final String stok;
+  final String min;
   const _StokMenipis({required this.nama, required this.stok, required this.min});
 
   @override

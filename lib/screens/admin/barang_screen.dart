@@ -6,7 +6,10 @@ import '../../widgets/badge.dart';
 import 'barang_form_screen.dart';
 import 'pembelian_screen.dart';
 
-/// Data Inventory / Barang (murni tampilan statis).
+/// =============================
+/// HALAMAN DATA BARANG (ADMIN)
+/// =============================
+/// Daftar barang/inventory (UI-only wireframe).
 class BarangScreen extends StatelessWidget {
   const BarangScreen({super.key});
 
@@ -16,7 +19,7 @@ class BarangScreen extends StatelessWidget {
       title: 'Data Inventory',
       body: Column(
         children: [
-          // Toolbar: pencarian & tombol aksi
+          // TOOLBAR: PENCARIAN & AKSI
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Column(
@@ -59,7 +62,7 @@ class BarangScreen extends StatelessWidget {
             ),
           ),
 
-          // Daftar barang
+          // DAFTAR BARANG
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
@@ -81,8 +84,12 @@ class BarangScreen extends StatelessWidget {
   }
 }
 
+/// Tile item barang (private)
 class _BarangTile extends StatelessWidget {
-  final String nama, kategori, stok, harga;
+  final String nama;
+  final String kategori;
+  final String stok;
+  final String harga;
   const _BarangTile({
     required this.nama,
     required this.kategori,
@@ -167,6 +174,7 @@ class _BarangTile extends StatelessWidget {
     );
   }
 
+  /// Info meta baris bawah tile
   Widget _meta(String label, String value) {
     return Padding(
       padding: const EdgeInsets.only(right: 18),

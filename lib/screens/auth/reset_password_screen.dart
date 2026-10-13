@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../../theme.dart';
 import 'login_screen.dart';
 
-/// Halaman Reset Password (murni tampilan).
+/// =============================
+/// HALAMAN RESET PASSWORD
+/// =============================
+/// Form reset password baru (UI-only wireframe).
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
 
@@ -11,7 +14,10 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  /// Toggle visibilitas password baru
   bool _obscure = true;
+
+  /// Toggle visibilitas konfirmasi password
   bool _obscure2 = true;
 
   @override

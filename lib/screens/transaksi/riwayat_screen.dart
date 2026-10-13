@@ -3,7 +3,10 @@ import '../../theme.dart';
 import '../../widgets/app_scaffold.dart';
 import 'struk_screen.dart';
 
-/// Riwayat Transaksi (murni tampilan statis).
+/// =============================
+/// HALAMAN RIWAYAT TRANSAKSI
+/// =============================
+/// Daftar riwayat transaksi (UI-only wireframe).
 class RiwayatScreen extends StatelessWidget {
   const RiwayatScreen({super.key});
 
